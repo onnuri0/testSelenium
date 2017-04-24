@@ -1,0 +1,50 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+<h1>
+	Hello world!  
+</h1>
+
+<P>  The time on the server is ${serverTime}. </P>
+<form id='frm' name='frm' method="post" action="step2.do">
+	<input type="text" id="id" name="id" />
+	<input type="text" id="pw" name="pw" />
+</form>
+
+<a href="#this" class="btn" id="nextStep">다음</a>
+
+
+
+<script type="text/javascript">
+        $(document).ready(function(){
+        	
+            
+        	$("#nextStep").on("click", function(e){ 
+            	alert("111");
+                e.preventDefault();
+                alert("222");
+                document.frm.submit();
+            });
+            
+     
+        });
+         
+         
+         
+        function fn_Next(){
+            var comSubmit = new ComSubmit('frm');
+            comSubmit.setUrl("<c:url value='/step2.do' />");
+            console.log(comSubmit);
+            comSubmit.submit();
+        }
+    </script>
+
+</body>
+</html>
